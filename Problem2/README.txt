@@ -4,7 +4,7 @@
 
 ## Where
 	/path/to/points_file.csv: 
-		is the file with the training set, located in hdfs, like /user/hadoop/data/points.csv 
+		is the file with the data set, located in hdfs, like /user/hadoop/data/points.csv 
 	/path/to/output:
 		is the hdfs direction where outputs are stored, like /user/hadoop/output 
 	/path/to/centroids.txt:
