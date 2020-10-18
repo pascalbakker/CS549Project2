@@ -5,7 +5,7 @@
         "directory": "/home/pascal/code/masters/bigdata/CS549Project2",
         "workspaceDir": "/home/pascal/code/masters/bigdata/CS549Project2",
         "sources": [
-            "/home/pascal/code/masters/bigdata/CS549Project2/src/test/java"
+            
         ],
         "dependencies": [
             "project2"
@@ -197,9 +197,9 @@
             "options": [
                 "-g",
                 "-target",
-                "1.7",
+                "1.8",
                 "-source",
-                "1.7",
+                "1.8",
                 "-encoding",
                 "UTF-8"
             ]

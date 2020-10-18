@@ -171,31 +171,4 @@ public class Outlier {
       }
     }
   }
-
-
-
-
-  public static void main(String[] args) throws Exception {
-
-    Configuration conf = new Configuration();
-    conf.set("Radius", args[2]);
-    conf.set("Neighbors", args[3]);
-
-
-    Job job = Job.getInstance(conf, "Outlier");
-    job.setJarByClass(Outlier.class);
-    job.setMapperClass(OMapper.class);
-    job.setReducerClass(OReducer.class);
-
-    job.setMapOutputKeyClass(Text.class);
-    job.setMapOutputValueClass(PointWritable.class);
-    job.setOutputKeyClass(NullWritable.class);
-    job.setOutputValueClass(PointWritable.class);
-
-    FileInputFormat.addInputPath(job, new Path(args[0]));
-    FileOutputFormat.setOutputPath(job, new Path(args[1]));
-    job.waitForCompletion(true);
-
-
-  }
 }

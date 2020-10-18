@@ -98,15 +98,15 @@ public class Problem3JsonFormatting {
                     String jsonString = new String(Arrays.copyOfRange(dataOutputBuffer.getData(), 0, dataOutputBuffer.getLength())).trim();
 
                     // get flags and elevation
-                    String newString = jsonString.replace("}{\"","");
-                    String[] jsonvalues = newString.replace(": ", "~").trim().split(",");
+                    String[] jsonvalues = jsonString.replace("}","").replace("{","").replace("\"","").replace(": ", "~").trim().split(",");
                     String combined = "";
                     for (String v : jsonvalues){
                         if(v.contains("Flags") || v.contains("Elevation"))
                             combined += v.trim() + ",";
                     }
                     // System.out.println(combined);
-                    combined = combined.substring(0,combined.length()-1);
+                    if(combined.length()>0)
+                        combined = combined.substring(0,combined.length()-1);
                     value.set(new Text(combined));
                     key = new Text(fsDataInputStream.getPos() + "");
 
