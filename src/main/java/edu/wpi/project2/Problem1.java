@@ -120,7 +120,6 @@ public class Problem1{
 							}
 						}
 				}
-
 			}catch(Exception ex){
 				ex.printStackTrace();
 				System.exit(1);

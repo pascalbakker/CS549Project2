@@ -57,6 +57,7 @@ public class App {
     }
 
     public static void problem1(String pointCSVPath, String rectangleCSVPath, String outputCSVPath)throws Exception{
+        deleteResults(outputCSVPath);
         Configuration conf = new Configuration();
         conf.set("mapreduce.output.textoutputformat.separator", ",");
         Job job = Job.getInstance(conf, "Problem 1");
@@ -141,6 +142,7 @@ public class App {
           }
     }
     public static void problem3(String inputPath, String outputPath) throws Exception{
+        deleteResults(outputPath);
         Configuration conf = new Configuration();
         FileSystem fs = FileSystem.get(conf);
         fs.delete(new Path(outputPath), true);
@@ -148,10 +150,10 @@ public class App {
         job.setJarByClass(Problem3JsonFormatting.class);
         job.setMapperClass(Problem3JsonFormatting.CustomMapper.class);
         job.setReducerClass(Problem3JsonFormatting.CustomReducer.class);
-        job.setInputFormatClass(Problem3JsonFormatting.JSONInputFormat.class);
+        job.setInputFormatClass(Problem3JsonFormatting.JsonInputFormat.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
-        Problem3JsonFormatting.JSONInputFormat.addInputPath(job, new Path(inputPath));
+        Problem3JsonFormatting.JsonInputFormat.addInputPath(job, new Path(inputPath));
         FileOutputFormat.setOutputPath(job, new Path(outputPath));
 		boolean jobStatus = job.waitForCompletion(true);
         System.exit(jobStatus ? 0 : 1);
